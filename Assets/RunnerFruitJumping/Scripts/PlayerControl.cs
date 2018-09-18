@@ -77,6 +77,13 @@ public class PlayerControl : MonoBehaviour
 			cam.LerpCamera (_transform.parent.gameObject);
 		}
 		CheckTriggerCam ();
+
+		// if (listPlatform.activeSelf == false) {
+		// 	if ((Input.GetMouseButtonDown(0) || gameManager.IsOKButtonPressed())) {
+		// 		gameManager.RestartGame ();
+		// 		uiManager.ButtonRestart ();
+		// 	}
+		// }
 	}
 
 	public void Jump ()

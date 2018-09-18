@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
 		if (Input.GetKeyDown (KeyCode.Escape)) {
 			Application.Quit ();
 		}
-		if(Input.GetMouseButtonDown (0)&& !WasAButton())
+		if ((Input.GetMouseButtonDown(0) || IsOKButtonPressed()) && !WasAButton())
 		{
 			TouchGame ();
 		}
@@ -60,7 +60,15 @@ public class GameManager : MonoBehaviour
 				cam.enabled = true;
 			}
 			player.Jump ();
-		}	
+		} 
+		// else if (gameState == GameState.start) {
+		// 	PlayGame ();
+		// 	uiManager.ButtonPlay ();
+		// }
+		// else if (gameState == GameState.gameOver) {
+		// 	RestartGame ();
+		// 	uiManager.ButtonRestart ();
+		// }
 	}
 
 	public void PlayGame ()
@@ -107,5 +115,43 @@ public class GameManager : MonoBehaviour
 				platform.SetPlatform ();
 			}
 		}
+	}
+
+#if DEBUG_VERSION
+	// 检查按键信息 start
+	public Text keycodeText1;
+	public Text keycodeText2;
+	private int keyTextIndex = 0;
+	void OnGUI()
+	{
+		if (Input.anyKeyDown)
+		{
+			Event e = Event.current;
+			if (e.isKey)
+			{
+				if (keyTextIndex == 0)
+				{
+					keycodeText1.text ="按下的键值：" + e.keyCode.ToString();
+					Debug.Log(keycodeText1.text);
+					keyTextIndex++;
+				}
+				else if(keyTextIndex == 1)
+				{
+					keycodeText2.text ="按下的键值：" + e.keyCode.ToString();
+					Debug.Log(keycodeText2.text);
+					keyTextIndex = 0;
+				}
+			}
+		}
+	}
+	// 检查按键信息 end
+#endif
+	public bool IsOKButtonPressed()
+	{
+		if (Input.GetKeyDown (KeyCode.JoystickButton0))
+		{
+			return true;
+		}
+		return false;
 	}
 }
