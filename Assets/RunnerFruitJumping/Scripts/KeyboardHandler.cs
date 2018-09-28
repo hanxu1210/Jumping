@@ -19,10 +19,27 @@ public class KeyboardHandler : MonoBehaviour
             buttonMe.onClick.Invoke();
         }
 #endif
+		if (keyboard == KeyCode.JoystickButton0)
+		{
+			KeyCode DPAD_CENTER=(KeyCode)10;
 
-        if (Input.GetKeyDown(keyboard))
-        {
-            buttonMe.onClick.Invoke();
-        }
+			if (Input.GetKeyDown (DPAD_CENTER))
+			{
+				buttonMe.onClick.Invoke();
+			}
+			else if (Input.GetKeyDown(KeyCode.JoystickButton0))
+			{
+				buttonMe.onClick.Invoke();
+			}
+		}
+		else
+		{
+			if (Input.GetKeyDown(keyboard))
+			{
+				buttonMe.onClick.Invoke();
+			}
+		}
+			
+
     }
 }
