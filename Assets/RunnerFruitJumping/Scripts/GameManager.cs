@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
 		if (Input.GetKeyDown (KeyCode.Escape)) {
 			Application.Quit ();
 		}
-		if ((Input.GetMouseButtonDown(0) || IsOKButtonPressed()) && !WasAButton())
+		if ((Input.GetMouseButtonDown(0) || KeyboardHandler.IsOkButtonDown()) && !WasAButton())
 		{
 			TouchGame ();
 		}
@@ -146,12 +146,12 @@ public class GameManager : MonoBehaviour
 	}
 	// 检查按键信息 end
 #endif
-	public bool IsOKButtonPressed()
-	{
-		if (Input.GetKeyDown (KeyCode.JoystickButton0))
-		{
-			return true;
-		}
-		return false;
-	}
+	// public bool IsOKButtonPressed()
+	// {
+	// 	if (Input.GetKeyDown (KeyCode.JoystickButton0))
+	// 	{
+	// 		return true;
+	// 	}
+	// 	return false;
+	// }
 }

@@ -39,7 +39,18 @@ public class KeyboardHandler : MonoBehaviour
 				buttonMe.onClick.Invoke();
 			}
 		}
-			
-
     }
+
+	static public bool IsOkButtonDown()
+	{
+		if (Input.GetKeyDown (KeyCode.JoystickButton0))
+		{
+			return true;
+		}
+		else if (Input.GetKeyDown((KeyCode)10))
+		{
+			return true;
+		}
+		return false;
+	}
 }
